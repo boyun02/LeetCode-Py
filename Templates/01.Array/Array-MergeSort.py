@@ -1,4 +1,7 @@
 class Solution:
+    """
+    采用经典的分治策略，先递归地将当前数组平均分成两半，然后将有序数组两两合并，最终合并成一个有序数组。
+    """
     # 合并过程
     def merge(self, left_nums: [int], right_nums: [int]):
         nums = []
@@ -33,10 +36,46 @@ class Solution:
         
         mid = len(nums) // 2                        # 将数组从中间位置分为左右两个数组
         left_nums = self.mergeSort(nums[0: mid])    # 递归将左子数组进行分解和排序
-        right_nums =  self.mergeSort(nums[mid:])    # 递归将右子数组进行分解和排序
+        right_nums = self.mergeSort(nums[mid:])    # 递归将右子数组进行分解和排序
         return self.merge(left_nums, right_nums)    # 把当前数组组中有序子数组逐层向上，进行两两合并
 
     def sortArray(self, nums: [int]) -> [int]:
         return self.mergeSort(nums)
     
 print(Solution().sortArray([0, 5, 7, 3, 1, 6, 8, 4]))
+
+
+
+class SolutionWork:
+    def merge(self, left_nums: [int], right_nums: [int]):
+        nums = []
+        left_i = 0
+        right_i = 0
+        while left_i < len(left_nums) and  right_i < len(right_nums):
+            if left_nums[left_i] < right_nums[right_i]:
+                nums.append(left_nums[left_i])
+                left_i += 1
+            else:
+                nums.append(right_nums[right_i])
+                right_i += 1
+        while left_i<len(left_nums):
+            nums.append(left_nums[left_i])
+            left_i += 1
+
+        while right_i<len(right_nums):
+            nums.append(right_nums[right_i])
+            right_i +=1
+        return nums
+
+    def mergeSort(self, nums: [int])->[int]:
+        if len(nums)==1:
+            return nums
+        mid = len(nums)//2
+        left_nums = self.mergeSort(nums[0:mid])
+        right_nums = self.mergeSort(nums[mid:])
+        return self.merge(left_nums, right_nums)  # 把当前数组组中有序子数组逐层向上，进行两两合并
+
+    def sortArray(self, nums: [int]) -> [int]:
+        return self.mergeSort(nums)
+
+print(SolutionWork().sortArray([0, 5, 7, 3, 1, 6, 8, 4]))

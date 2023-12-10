@@ -1,4 +1,7 @@
 class MaxHeap:
+    """
+    「堆排序（Heap sort）」是一种基于「堆结构」实现的高效排序算法。在介绍「堆排序」之前，我们先来了解一下什么是「堆结构」。
+    """
     def __init__(self):
         self.max_heap = []
         

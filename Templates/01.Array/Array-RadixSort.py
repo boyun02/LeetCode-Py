@@ -1,4 +1,7 @@
 class Solution:
+    """
+    将整数按位数切割成不同的数字，然后从低位开始，依次到高位，逐位进行排序，从而达到排序的目的。
+    """
     def radixSort(self, nums: [int]) -> [int]:
         # 桶的大小为所有元素的最大位数
         size = len(str(max(nums)))

@@ -1,4 +1,7 @@
 class Solution:
+    """
+    通过统计数组中每个元素在数组中出现的次数，根据这些统计信息将数组元素有序的放置到正确位置，从而达到排序的目的。
+    """
     def countingSort(self, nums: [int]) -> [int]:
         # 计算待排序数组中最大值元素 nums_max 和最小值元素 nums_min
         nums_min, nums_max = min(nums), max(nums)

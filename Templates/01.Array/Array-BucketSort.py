@@ -1,4 +1,7 @@
 class Solution:
+    """
+    将待排序数组中的元素分散到若干个「桶」中，然后对每个桶中的元素再进行单独排序。
+    """
     def insertionSort(self, nums: [int]) -> [int]:
         # 遍历无序区间
         for i in range(1, len(nums)):
